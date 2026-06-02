@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { LanguageSwitcherSelect } from '@/components/ui/language-switcher'
-import { useMissionControl } from '@/store'
+import { useRamtriSolutions } from '@/store'
 import { useNavigateToPanel } from '@/lib/navigation'
 import { SecurityScanCard } from '@/components/onboarding/security-scan-card'
 import { AgentRuntimesSection } from '@/components/settings/agent-runtimes-section'
@@ -75,7 +75,7 @@ function parseCoordinatorTargetAgents(rawAgents: any[]): CoordinatorTargetAgent[
 }
 
 const categoryLabels: Record<string, { label: string; icon: string; description: string }> = {
-  general: { label: 'General', icon: '⚙', description: 'Core Mission Control settings' },
+  general: { label: 'General', icon: '⚙', description: 'Core Ramtri Solutions settings' },
   security: { label: 'Security', icon: '🔑', description: 'API key management and security settings' },
   retention: { label: 'Data Retention', icon: '🗄', description: 'How long data is kept before cleanup' },
   chat: { label: 'Chat', icon: '💬', description: 'Coordinator routing and chat behavior settings' },
@@ -107,7 +107,7 @@ const subscriptionDropdowns: Record<string, { label: string; value: string }[]> 
 
 export function SettingsPanel() {
   const t = useTranslations('settings')
-  const { currentUser, setShowOnboarding } = useMissionControl()
+  const { currentUser, setShowOnboarding } = useRamtriSolutions()
   const navigateToPanel = useNavigateToPanel()
   const [settings, setSettings] = useState<Setting[]>([])
   const [grouped, setGrouped] = useState<Record<string, Setting[]>>({})
@@ -1004,7 +1004,7 @@ export function SettingsPanel() {
 }
 
 function InterfaceModeSelector() {
-  const { interfaceMode, setInterfaceMode } = useMissionControl()
+  const { interfaceMode, setInterfaceMode } = useRamtriSolutions()
   const [saving, setSaving] = useState(false)
   const navigateToPanel = useNavigateToPanel()
 
@@ -1031,7 +1031,7 @@ function InterfaceModeSelector() {
     // If switching to essential and on a hidden panel, redirect
     if (reachedServer && mode === 'essential') {
       const essentialIds = new Set(['overview', 'agents', 'tasks', 'chat', 'activity', 'logs', 'settings'])
-      const store = useMissionControl.getState()
+      const store = useRamtriSolutions.getState()
       if (!essentialIds.has(store.activeTab)) {
         navigateToPanel('overview')
       }
@@ -1106,7 +1106,7 @@ function formatLabel(key: string): string {
 // ---------------------------------------------------------------------------
 
 function AccountOAuthSection() {
-  const { currentUser } = useMissionControl()
+  const { currentUser } = useRamtriSolutions()
   const [disconnecting, setDisconnecting] = useState(false)
   const [feedback, setFeedback] = useState<{ ok: boolean; text: string } | null>(null)
 

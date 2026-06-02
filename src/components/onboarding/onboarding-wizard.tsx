@@ -6,7 +6,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { Loader } from '@/components/ui/loader'
-import { useMissionControl } from '@/store'
+import { useRamtriSolutions } from '@/store'
 import { apiFetch } from '@/lib/api-client'
 import { useNavigateToPanel } from '@/lib/navigation'
 import { clampWizardStep, getWizardSteps, stepIdAt } from '@/lib/onboarding-flow'
@@ -65,7 +65,7 @@ function modeColors(isGateway: boolean) {
 }
 
 export function OnboardingWizard() {
-  const { showOnboarding, setShowOnboarding, dashboardMode, gatewayAvailable, interfaceMode, setInterfaceMode } = useMissionControl()
+  const { showOnboarding, setShowOnboarding, dashboardMode, gatewayAvailable, interfaceMode, setInterfaceMode } = useRamtriSolutions()
   const navigateToPanel = useNavigateToPanel()
   const t = useTranslations('onboarding')
   const [step, setStep] = useState(0)
@@ -237,7 +237,7 @@ export function OnboardingWizard() {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Mission Control onboarding"
+        aria-label="Ramtri Solutions onboarding"
         className="relative z-10 my-auto w-full max-w-3xl bg-background border border-border/50 rounded-lg sm:rounded-xl shadow-2xl overflow-hidden flex max-h-[calc(100dvh-1rem)] sm:max-h-[85vh] flex-col"
       >
         {/* Progress bar */}
@@ -320,7 +320,7 @@ function StepWelcome({ isGateway, capabilities, runtimeStatuses, runtimesLoading
         <div className="w-14 h-14 rounded-xl overflow-hidden bg-surface-1 border border-border/50 flex items-center justify-center shadow-lg">
           <Image
             src="/brand/mc-logo-128.png"
-            alt="Mission Control"
+            alt="Ramtri Solutions"
             width={56}
             height={56}
             className="w-full h-full object-cover"
@@ -446,7 +446,7 @@ function StepInterfaceMode({ isGateway, onNext, onBack }: {
   const mc = modeColors(isGateway)
   const t = useTranslations('onboarding.interfaceMode')
   const tc = useTranslations('common')
-  const { interfaceMode, setInterfaceMode } = useMissionControl()
+  const { interfaceMode, setInterfaceMode } = useRamtriSolutions()
   const [selected, setSelected] = useState<'essential' | 'full'>(interfaceMode)
 
   const handleSelect = async (mode: 'essential' | 'full') => {

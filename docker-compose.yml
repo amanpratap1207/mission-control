@@ -1,7 +1,7 @@
 services:
-  mission-control:
+  ramtri-solutions:
     build: .
-    container_name: mission-control
+    container_name: ramtri-solutions
     ports:
       - "${MC_PORT:-3000}:${PORT:-3000}"
     environment:
@@ -31,7 +31,7 @@ services:
         required: false
     volumes:
       - mc-data:/app/.data
-      # Optional: mount your OpenClaw state directory read-only so Mission Control
+      # Optional: mount your OpenClaw state directory read-only so Ramtri Solutions
       # can read agent configs and memory. Uncomment and adjust the host path:
       # - ${OPENCLAW_HOME:-~/.openclaw}:/run/openclaw:ro
     # Allow the container to reach an OpenClaw gateway running on the Docker host.
@@ -61,10 +61,10 @@ services:
 
   # Standalone mode — no gateway required. Start with:
   #   docker compose --profile standalone up
-  mission-control-standalone:
+  ramtri-solutions-standalone:
     extends:
-      service: mission-control
-    container_name: mission-control-standalone
+      service: ramtri-solutions
+    container_name: ramtri-solutions-standalone
     profiles:
       - standalone
     environment:

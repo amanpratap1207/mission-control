@@ -300,9 +300,9 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Job ID required' }, { status: 400 })
       }
 
-      if (process.env.MISSION_CONTROL_ALLOW_COMMAND_TRIGGER !== '1') {
+      if (process.env.RAMTRI_SOLUTIONS_ALLOW_COMMAND_TRIGGER !== '1') {
         return NextResponse.json(
-          { error: 'Manual triggers disabled. Set MISSION_CONTROL_ALLOW_COMMAND_TRIGGER=1 to enable.' },
+          { error: 'Manual triggers disabled. Set RAMTRI_SOLUTIONS_ALLOW_COMMAND_TRIGGER=1 to enable.' },
           { status: 403 }
         )
       }

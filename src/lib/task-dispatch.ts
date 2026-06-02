@@ -48,10 +48,10 @@ interface DispatchableTask {
 // ---------------------------------------------------------------------------
 
 /**
- * Return an explicit gateway model override from Mission Control agent config.
+ * Return an explicit gateway model override from Ramtri Solutions agent config.
  *
  * By default, task dispatch should not inject a model override; the OpenClaw
- * agent should use its own configured default model. A Mission Control agent
+ * agent should use its own configured default model. A Ramtri Solutions agent
  * may still opt into an override via agent.config.dispatchModel.
  */
 export function resolveTaskDispatchModelOverride(task: Pick<DispatchableTask, 'agent_config'>): string | null {
@@ -84,7 +84,7 @@ function buildTaskPrompt(task: DispatchableTask, rejectionFeedback?: string | nu
     : `TASK-${task.id}`
 
   const lines = [
-    'You have been assigned a task in Mission Control.',
+    'You have been assigned a task in Ramtri Solutions.',
     '',
     `**[${ticket}] ${task.title}**`,
     `Priority: ${task.priority}`,
@@ -878,7 +878,7 @@ function buildReviewPrompt(task: ReviewableTask): string {
     : `TASK-${task.id}`
 
   const lines = [
-    'You are Aegis, the quality reviewer for Mission Control.',
+    'You are Aegis, the quality reviewer for Ramtri Solutions.',
     'Review the following completed task and its resolution.',
     '',
     `**[${ticket}] ${task.title}**`,

@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect } from 'react'
-import { useMissionControl } from '@/store'
+import { useRamtriSolutions } from '@/store'
 import { normalizeModel } from '@/lib/utils'
 import { buildGatewayPathFallbackUrls, buildGatewayWebSocketUrl } from '@/lib/gateway-url'
 import {
@@ -91,7 +91,7 @@ export function useWebSocket() {
     updateAgent,
     addExecApproval,
     updateExecApproval,
-  } = useMissionControl()
+  } = useRamtriSolutions()
 
   const isNonRetryableGatewayError = useCallback((message: string, error?: GatewayFrame['error']): boolean => {
     // Prefer structured error code when available (newer gateways)
@@ -124,7 +124,7 @@ export function useWebSocket() {
       normalized.includes('requires device identity') ||
       normalized.includes('secure context')
     ) {
-      return 'Gateway requires device identity. Open Mission Control via HTTPS (or localhost), then reconnect so WebCrypto signing can run.'
+      return 'Gateway requires device identity. Open Ramtri Solutions via HTTPS (or localhost), then reconnect so WebCrypto signing can run.'
     }
     if (normalized.includes('device_auth_signature_invalid')) {
       return 'Gateway rejected device signature. Clear local device identity in the browser and reconnect.'
@@ -270,7 +270,7 @@ export function useWebSocket() {
         ...buildProtocolNegotiation(),
         client: {
           id: clientId,
-          displayName: 'Mission Control',
+          displayName: 'Ramtri Solutions',
           version: APP_VERSION,
           platform: 'web',
           mode: clientMode,

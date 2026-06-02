@@ -299,14 +299,14 @@ export default function LoginPage() {
           <div className="w-12 h-12 rounded-lg overflow-hidden bg-background border border-border/50 flex items-center justify-center mb-3">
             <Image
               src="/brand/mc-logo-128.png"
-              alt="Mission Control logo"
+              alt="Ramtri Solutions logo"
               width={48}
               height={48}
               className="h-full w-full object-cover"
               priority
             />
           </div>
-          <h1 className="text-xl font-semibold text-foreground">{t('missionControl')}</h1>
+          <h1 className="text-xl font-semibold text-foreground">{t('ramtriSolutions')}</h1>
           <p className="text-sm text-muted-foreground mt-1">{t('signInToContinue')}</p>
         </div>
 

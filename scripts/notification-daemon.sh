@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Mission Control Phase 3: Notification Delivery Daemon
+# Ramtri Solutions Phase 3: Notification Delivery Daemon
 # Polls undelivered notifications and sends them to agent sessions via OpenClaw
 #
 # Usage:
@@ -16,8 +16,8 @@
 set -e
 
 # Configuration
-MISSION_CONTROL_URL="${MISSION_CONTROL_URL:-http://localhost:3000}"
-LOG_DIR="${LOG_DIR:-$HOME/.mission-control/logs}"
+RAMTRI_SOLUTIONS_URL="${RAMTRI_SOLUTIONS_URL:-http://localhost:3000}"
+LOG_DIR="${LOG_DIR:-$HOME/.ramtri-solutions/logs}"
 LOG_FILE="$LOG_DIR/notification-daemon-$(date +%Y-%m-%d).log"
 PID_FILE="/tmp/notification-daemon.pid"
 DEFAULT_INTERVAL=60
@@ -40,10 +40,10 @@ log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] [$level] $*" | tee -a "$LOG_FILE"
 }
 
-# Check if Mission Control is running
-check_mission_control() {
-    if ! curl -s "$MISSION_CONTROL_URL/api/status" > /dev/null 2>&1; then
-        log "ERROR" "Mission Control not accessible at $MISSION_CONTROL_URL"
+# Check if Ramtri Solutions is running
+check_ramtri_solutions() {
+    if ! curl -s "$RAMTRI_SOLUTIONS_URL/api/status" > /dev/null 2>&1; then
+        log "ERROR" "Ramtri Solutions not accessible at $RAMTRI_SOLUTIONS_URL"
         return 1
     fi
     return 0
@@ -70,7 +70,7 @@ deliver_notifications() {
         -X POST \
         -H "Content-Type: application/json" \
         -d "$api_payload" \
-        "$MISSION_CONTROL_URL/api/notifications/deliver" 2>/dev/null)
+        "$RAMTRI_SOLUTIONS_URL/api/notifications/deliver" 2>/dev/null)
     
     local http_code
     http_code=$(echo "$response" | grep -o "HTTP_STATUS:[0-9]*" | cut -d: -f2)
@@ -118,7 +118,7 @@ deliver_notifications() {
 
 # Get delivery statistics
 get_delivery_stats() {
-    local stats_url="$MISSION_CONTROL_URL/api/notifications/deliver"
+    local stats_url="$RAMTRI_SOLUTIONS_URL/api/notifications/deliver"
     
     local response
     local curl_ok=false
@@ -183,8 +183,8 @@ run_daemon() {
     
     # Main daemon loop
     while true; do
-        if ! check_mission_control; then
-            log "WARN" "Mission Control not accessible, sleeping $INTERVAL seconds"
+        if ! check_ramtri_solutions; then
+            log "WARN" "Ramtri Solutions not accessible, sleeping $INTERVAL seconds"
             sleep "$INTERVAL"
             continue
         fi
@@ -263,7 +263,7 @@ parse_args() {
 # Show help
 show_help() {
     cat << 'EOF'
-Mission Control Notification Delivery Daemon
+Ramtri Solutions Notification Delivery Daemon
 
 Usage: notification-daemon.sh [options]
 
@@ -297,7 +297,7 @@ Examples:
   ./notification-daemon.sh --stop
 
 Environment variables:
-  MISSION_CONTROL_URL    Mission Control base URL (default: http://localhost:3005)
+  RAMTRI_SOLUTIONS_URL    Ramtri Solutions base URL (default: http://localhost:3005)
 
 Log files:
   $LOG_DIR/notification-daemon-YYYY-MM-DD.log
@@ -328,8 +328,8 @@ main() {
         # Single run mode
         log "INFO" "Starting single notification delivery run"
         
-        if ! check_mission_control; then
-            log "ERROR" "Aborting: Mission Control not accessible"
+        if ! check_ramtri_solutions; then
+            log "ERROR" "Aborting: Ramtri Solutions not accessible"
             exit 1
         fi
         

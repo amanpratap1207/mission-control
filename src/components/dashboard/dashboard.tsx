@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react'
 import { apiFetch } from '@/lib/api-client'
-import { useMissionControl } from '@/store'
+import { useRamtriSolutions } from '@/store'
 import { useNavigateToPanel } from '@/lib/navigation'
 import { useSmartPoll } from '@/lib/use-smart-poll'
 import { SignalPill, getLocalOsStatus, getProviderHealth, getMcHealth } from './widget-primitives'
@@ -22,7 +22,7 @@ export function Dashboard() {
     agents,
     tasks,
     setActiveConversation,
-  } = useMissionControl()
+  } = useRamtriSolutions()
 
   const navigateToPanel = useNavigateToPanel()
   const isLocal = dashboardMode === 'local'

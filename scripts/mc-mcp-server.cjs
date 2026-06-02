@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /*
- Mission Control MCP Server (stdio transport)
+ Ramtri Solutions MCP Server (stdio transport)
  - Zero dependencies (Node.js built-ins only)
  - JSON-RPC 2.0 over stdin/stdout
- - Wraps Mission Control REST API as MCP tools
- - Add with: claude mcp add mission-control -- node /path/to/mc-mcp-server.cjs
+ - Wraps Ramtri Solutions REST API as MCP tools
+ - Add with: claude mcp add ramtri-solutions -- node /path/to/mc-mcp-server.cjs
 
  Environment:
    MC_URL       Base URL (default: http://127.0.0.1:3000)
@@ -22,7 +22,7 @@ const os = require('node:os');
 
 function loadConfig() {
   // Try profile first, then env vars
-  const profilePath = path.join(os.homedir(), '.mission-control', 'profiles', 'default.json');
+  const profilePath = path.join(os.homedir(), '.ramtri-solutions', 'profiles', 'default.json');
   let profile = {};
   try {
     profile = JSON.parse(fs.readFileSync(profilePath, 'utf8'));
@@ -78,7 +78,7 @@ const TOOLS = [
   // --- Agents ---
   {
     name: 'mc_list_agents',
-    description: 'List all agents registered in Mission Control',
+    description: 'List all agents registered in Ramtri Solutions',
     inputSchema: { type: 'object', properties: {}, required: [] },
     handler: async () => api('GET', '/api/agents'),
   },
@@ -298,7 +298,7 @@ const TOOLS = [
   // --- Tasks ---
   {
     name: 'mc_list_tasks',
-    description: 'List tasks in Mission Control with optional filters',
+    description: 'List tasks in Ramtri Solutions with optional filters',
     inputSchema: {
       type: 'object',
       properties: {
@@ -583,13 +583,13 @@ const TOOLS = [
   // --- Status ---
   {
     name: 'mc_health',
-    description: 'Check Mission Control health status (no auth required)',
+    description: 'Check Ramtri Solutions health status (no auth required)',
     inputSchema: { type: 'object', properties: {}, required: [] },
     handler: async () => api('GET', '/api/status?action=health'),
   },
   {
     name: 'mc_dashboard',
-    description: 'Get a dashboard summary of the entire Mission Control system (agents, tasks, sessions, costs)',
+    description: 'Get a dashboard summary of the entire Ramtri Solutions system (agents, tasks, sessions, costs)',
     inputSchema: { type: 'object', properties: {}, required: [] },
     handler: async () => api('GET', '/api/status?action=dashboard'),
   },
@@ -635,7 +635,7 @@ const TOOLS = [
   },
   {
     name: 'mc_create_run',
-    description: 'Report a new agent run to Mission Control (agent-run protocol)',
+    description: 'Report a new agent run to Ramtri Solutions (agent-run protocol)',
     inputSchema: {
       type: 'object',
       properties: {
@@ -731,7 +731,7 @@ for (const tool of TOOLS) {
 // ---------------------------------------------------------------------------
 
 const SERVER_INFO = {
-  name: 'mission-control',
+  name: 'ramtri-solutions',
   version: '2.0.1',
 };
 

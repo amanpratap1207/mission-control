@@ -1,4 +1,4 @@
-# Mission Control
+# Ramtri Solutions
 
 Open-source dashboard for AI agent orchestration. Manage agent fleets, track tasks, monitor costs, and orchestrate workflows.
 
@@ -61,8 +61,8 @@ Path alias: `@/*` maps to `./src/*`
 
 ## Data Directory
 
-Set `MISSION_CONTROL_DATA_DIR` env var to change the data location (defaults to `.data/`).
-Database path: defaults to `<MISSION_CONTROL_DATA_DIR>/mission-control.db`.
+Set `RAMTRI_SOLUTIONS_DATA_DIR` env var to change the data location (defaults to `.data/`).
+Database path: defaults to `<RAMTRI_SOLUTIONS_DATA_DIR>/ramtri-solutions.db`.
 
 ## Conventions
 
@@ -74,12 +74,12 @@ Database path: defaults to `<MISSION_CONTROL_DATA_DIR>/mission-control.db`.
 
 ## Agent Control Interfaces
 
-Mission Control provides three interfaces for autonomous agents:
+Ramtri Solutions provides three interfaces for autonomous agents:
 
 ### MCP Server (recommended for agents)
 ```bash
 # Add to any Claude Code agent:
-claude mcp add mission-control -- node /path/to/mission-control/scripts/mc-mcp-server.cjs
+claude mcp add ramtri-solutions -- node /path/to/ramtri-solutions/scripts/mc-mcp-server.cjs
 
 # Environment config:
 MC_URL=http://127.0.0.1:3000 MC_API_KEY=<key>

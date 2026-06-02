@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- Mission Control CLI (v2)
+ Ramtri Solutions CLI (v2)
  - Zero heavy dependencies
  - API-key first for agent automation
  - JSON mode + stable exit codes
@@ -42,7 +42,7 @@ function parseArgs(argv) {
 }
 
 function usage() {
-  console.log(`Mission Control CLI
+  console.log(`Ramtri Solutions CLI
 
 Usage:
   mc <group> <action> [--flags]
@@ -88,7 +88,7 @@ Examples:
 }
 
 function profilePath(name) {
-  return path.join(os.homedir(), '.mission-control', 'profiles', `${name}.json`);
+  return path.join(os.homedir(), '.ramtri-solutions', 'profiles', `${name}.json`);
 }
 
 function ensureParentDir(filePath) {

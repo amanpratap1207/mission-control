@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Mission Control Security Audit
+# Ramtri Solutions Security Audit
 # Run: bash scripts/security-audit.sh [--env-file .env]
 
 set -euo pipefail
@@ -23,7 +23,7 @@ if [[ -f "$ENV_FILE" ]]; then
   done < "$ENV_FILE"
 fi
 
-echo "=== Mission Control Security Audit ==="
+echo "=== Ramtri Solutions Security Audit ==="
 echo ""
 
 # 1. .env file permissions
@@ -120,29 +120,29 @@ fi
 echo ""
 echo "--- Docker Security ---"
 if command -v docker &>/dev/null; then
-  if docker ps --filter name=mission-control --format '{{.Names}}' 2>/dev/null | grep -q mission-control; then
-    ro=$(docker inspect mission-control --format '{{.HostConfig.ReadonlyRootfs}}' 2>/dev/null || echo "false")
+  if docker ps --filter name=ramtri-solutions --format '{{.Names}}' 2>/dev/null | grep -q ramtri-solutions; then
+    ro=$(docker inspect ramtri-solutions --format '{{.HostConfig.ReadonlyRootfs}}' 2>/dev/null || echo "false")
     if [[ "$ro" == "true" ]]; then
       pass "Container filesystem is read-only"
     else
       warn "Container filesystem is writable (use read_only: true)"
     fi
 
-    nnp=$(docker inspect mission-control --format '{{.HostConfig.SecurityOpt}}' 2>/dev/null || echo "[]")
+    nnp=$(docker inspect ramtri-solutions --format '{{.HostConfig.SecurityOpt}}' 2>/dev/null || echo "[]")
     if echo "$nnp" | grep -q "no-new-privileges"; then
       pass "no-new-privileges is set"
     else
       warn "no-new-privileges not set"
     fi
 
-    user=$(docker inspect mission-control --format '{{.Config.User}}' 2>/dev/null || echo "")
+    user=$(docker inspect ramtri-solutions --format '{{.Config.User}}' 2>/dev/null || echo "")
     if [[ -n "$user" && "$user" != "root" && "$user" != "0" ]]; then
       pass "Container runs as non-root user ($user)"
     else
       warn "Container may be running as root"
     fi
   else
-    info "Mission Control container not running"
+    info "Ramtri Solutions container not running"
   fi
 else
   info "Docker not installed (skipping container checks)"

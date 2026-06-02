@@ -7,15 +7,15 @@ const PASSWORD = 'mc-screenshots-2026';
 const OUTPUT_DIR = path.join(__dirname, '..', 'docs');
 
 const PANELS: [string, string][] = [
-  ['Overview', 'mission-control-overview'],
-  ['Agents', 'mission-control-agents'],
-  ['Tasks', 'mission-control-tasks'],
-  ['Skills', 'mission-control-skills'],
-  ['Memory', 'mission-control-memory'],
-  ['Cost Tracker', 'mission-control-cost-tracking'],
-  ['Security', 'mission-control-security'],
-  ['Cron', 'mission-control-cron'],
-  ['Activity', 'mission-control-activity'],
+  ['Overview', 'ramtri-solutions-overview'],
+  ['Agents', 'ramtri-solutions-agents'],
+  ['Tasks', 'ramtri-solutions-tasks'],
+  ['Skills', 'ramtri-solutions-skills'],
+  ['Memory', 'ramtri-solutions-memory'],
+  ['Cost Tracker', 'ramtri-solutions-cost-tracking'],
+  ['Security', 'ramtri-solutions-security'],
+  ['Cron', 'ramtri-solutions-cron'],
+  ['Activity', 'ramtri-solutions-activity'],
 ];
 
 async function main() {

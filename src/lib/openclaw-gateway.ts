@@ -144,7 +144,7 @@ export async function callOpenClawGateway<T = unknown>(
           maxProtocol: GATEWAY_PROTOCOL_VERSION,
           client: {
             id: GATEWAY_CLIENT_ID,
-            displayName: 'Mission Control',
+            displayName: 'Ramtri Solutions',
             version: APP_VERSION,
             platform: 'server',
             mode: 'backend',

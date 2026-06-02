@@ -40,7 +40,7 @@ if [[ -f "$PROJECT_ROOT/.env" ]]; then
   set +a
 fi
 
-export MISSION_CONTROL_DATA_DIR="${MISSION_CONTROL_DATA_DIR:-$PROJECT_ROOT/.data}"
+export RAMTRI_SOLUTIONS_DATA_DIR="${RAMTRI_SOLUTIONS_DATA_DIR:-$PROJECT_ROOT/.data}"
 
 # Next.js standalone server reads HOSTNAME to decide bind address.
 # Default to 0.0.0.0 so the server is accessible from outside the host.

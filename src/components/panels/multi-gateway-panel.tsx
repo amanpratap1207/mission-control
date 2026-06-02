@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
-import { useMissionControl } from '@/store'
+import { useRamtriSolutions } from '@/store'
 import { useWebSocket } from '@/lib/websocket'
 import { apiFetch, ApiError } from '@/lib/api-client'
 
@@ -80,7 +80,7 @@ export function MultiGatewayPanel() {
   const [probing, setProbing] = useState<number | null>(null)
   const [healthByGatewayId, setHealthByGatewayId] = useState<Map<number, GatewayHealthProbe>>(new Map())
   const [historyByGatewayId, setHistoryByGatewayId] = useState<Record<number, GatewayHistory>>({})
-  const { connection } = useMissionControl()
+  const { connection } = useRamtriSolutions()
   const { connect } = useWebSocket()
 
   const fetchGateways = useCallback(async () => {

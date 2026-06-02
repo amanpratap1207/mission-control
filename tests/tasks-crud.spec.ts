@@ -47,14 +47,14 @@ test.describe('Tasks CRUD', () => {
   test('POST persists implementation target metadata for deterministic repo routing', async ({ request }) => {
     const { id, res, body } = await createTestTask(request, {
       metadata: {
-        implementation_repo: 'builderz-labs/mission-control',
+        implementation_repo: 'builderz-labs/ramtri-solutions',
         code_location: '/apps/api',
       },
     })
     cleanup.push(id)
 
     expect(res.status()).toBe(201)
-    expect(body.task.metadata.implementation_repo).toBe('builderz-labs/mission-control')
+    expect(body.task.metadata.implementation_repo).toBe('builderz-labs/ramtri-solutions')
     expect(body.task.metadata.code_location).toBe('/apps/api')
   })
 
@@ -184,7 +184,7 @@ test.describe('Tasks CRUD', () => {
 
   test('PUT updates implementation target metadata and GET returns persisted values', async ({ request }) => {
     const { id } = await createTestTask(request, {
-      metadata: { implementation_repo: 'builderz-labs/mission-control', code_location: '/apps/api' },
+      metadata: { implementation_repo: 'builderz-labs/ramtri-solutions', code_location: '/apps/api' },
     })
     cleanup.push(id)
 
@@ -192,7 +192,7 @@ test.describe('Tasks CRUD', () => {
       headers: API_KEY_HEADER,
       data: {
         metadata: {
-          implementation_repo: 'torreypjones/mission-control',
+          implementation_repo: 'torreypjones/ramtri-solutions',
           code_location: '/src/app/api/tasks',
         },
       },
@@ -202,7 +202,7 @@ test.describe('Tasks CRUD', () => {
     const readRes = await request.get(`/api/tasks/${id}`, { headers: API_KEY_HEADER })
     expect(readRes.status()).toBe(200)
     const readBody = await readRes.json()
-    expect(readBody.task.metadata.implementation_repo).toBe('torreypjones/mission-control')
+    expect(readBody.task.metadata.implementation_repo).toBe('torreypjones/ramtri-solutions')
     expect(readBody.task.metadata.code_location).toBe('/src/app/api/tasks')
   })
 

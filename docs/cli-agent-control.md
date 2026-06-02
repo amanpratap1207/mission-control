@@ -1,4 +1,4 @@
-# Mission Control CLI for Agent-Complete Operations (v2)
+# Ramtri Solutions CLI for Agent-Complete Operations (v2)
 
 This repository includes a first-party CLI at:
 
@@ -6,7 +6,7 @@ This repository includes a first-party CLI at:
 
 Designed for autonomous/headless usage first:
 - API key auth support
-- Profile persistence (~/.mission-control/profiles/*.json)
+- Profile persistence (~/.ramtri-solutions/profiles/*.json)
 - Stable JSON mode (`--json`) with NDJSON for streaming
 - Deterministic exit code categories
 - SSE streaming for real-time event watching
@@ -14,7 +14,7 @@ Designed for autonomous/headless usage first:
 
 ## Quick start
 
-1) Ensure Mission Control API is running.
+1) Ensure Ramtri Solutions API is running.
 2) Set environment variables or use profile flags:
 
 - MC_URL=http://127.0.0.1:3000

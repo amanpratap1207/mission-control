@@ -203,7 +203,7 @@ const RUNTIME_META: Record<RuntimeId, RuntimeMeta> = {
     name: 'Hermes Agent',
     description: 'Self-improving AI agent with learning loop, skills, and multi-platform messaging.',
     authRequired: true,
-    authHint: 'Run "hermes setup" or configure via Mission Control.',
+    authHint: 'Run "hermes setup" or configure via Ramtri Solutions.',
   },
   claude: {
     name: 'Claude Code',
@@ -774,7 +774,7 @@ export function generateDockerSidecar(runtime: RuntimeId): string {
   if (runtime === 'opencode') {
     return `# OpenCode does not provide an official sidecar template yet.
 # Install it locally with Homebrew or your preferred package manager,
-# then let Mission Control discover sessions from ~/.local/share/opencode.`
+# then let Ramtri Solutions discover sessions from ~/.local/share/opencode.`
   }
 
   return `  # Hermes Agent sidecar
@@ -782,7 +782,7 @@ export function generateDockerSidecar(runtime: RuntimeId): string {
     image: ghcr.io/nousresearch/hermes-agent:latest
     container_name: hermes-agent
     environment:
-      - MC_URL=http://mission-control:\${PORT:-3000}
+      - MC_URL=http://ramtri-solutions:\${PORT:-3000}
       - MC_API_KEY=\${API_KEY:-}
     volumes:
       - hermes-data:/root/.hermes

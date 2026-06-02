@@ -14,7 +14,7 @@ const DB_PATH = config.dbPath;
 // Global database instance
 let db: Database.Database | null = null;
 const isBuildPhase = process.env.NEXT_PHASE === 'phase-production-build'
-const isTestMode = process.env.MISSION_CONTROL_TEST_MODE === '1'
+const isTestMode = process.env.RAMTRI_SOLUTIONS_TEST_MODE === '1'
 
 /**
  * Get or create database connection

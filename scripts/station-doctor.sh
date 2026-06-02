@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Mission Control Station Doctor
+# Ramtri Solutions Station Doctor
 # Local diagnostics — no auth required, runs on the host.
 #
 # Usage: bash scripts/station-doctor.sh [--port PORT]
@@ -26,7 +26,7 @@ warn() { echo "  [WARN] $1"; ((WARN++)); }
 fail() { echo "  [FAIL] $1"; ((FAIL++)); }
 info() { echo "  [INFO] $1"; }
 
-echo "=== Mission Control Station Doctor ==="
+echo "=== Ramtri Solutions Station Doctor ==="
 echo ""
 
 # ── 1. Process / Container check ─────────────────────────────────────────────
@@ -34,9 +34,9 @@ echo "--- Service Status ---"
 
 RUNNING_IN_DOCKER=false
 if command -v docker &>/dev/null; then
-  if docker ps --filter name=mission-control --format '{{.Names}}' 2>/dev/null | grep -q mission-control; then
+  if docker ps --filter name=ramtri-solutions --format '{{.Names}}' 2>/dev/null | grep -q ramtri-solutions; then
     RUNNING_IN_DOCKER=true
-    health=$(docker inspect mission-control --format '{{.State.Health.Status}}' 2>/dev/null || echo "none")
+    health=$(docker inspect ramtri-solutions --format '{{.State.Health.Status}}' 2>/dev/null || echo "none")
     if [[ "$health" == "healthy" ]]; then
       pass "Docker container is healthy"
     elif [[ "$health" == "starting" ]]; then
@@ -49,9 +49,9 @@ fi
 
 if ! $RUNNING_IN_DOCKER; then
   if pgrep -f "node.*server.js" &>/dev/null || pgrep -f "next-server" &>/dev/null; then
-    pass "Mission Control process is running"
+    pass "Ramtri Solutions process is running"
   else
-    fail "Mission Control process not found"
+    fail "Ramtri Solutions process not found"
   fi
 fi
 
@@ -97,7 +97,7 @@ fi
 echo ""
 echo "--- Database ---"
 
-DB_PATH="$PROJECT_ROOT/.data/mission-control.db"
+DB_PATH="$PROJECT_ROOT/.data/ramtri-solutions.db"
 if [[ -f "$DB_PATH" ]]; then
   db_size=$(du -h "$DB_PATH" 2>/dev/null | cut -f1)
   pass "Database exists ($db_size)"

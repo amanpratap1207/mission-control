@@ -1,8 +1,8 @@
-# Mission Control — Landing Page Handoff
+# Ramtri Solutions — Landing Page Handoff
 
 > Last updated: 2026-03-07 | Version: 1.3.0 | Branch: `fix/refactor` (bb5029e)
 
-This document contains all copy, stats, features, and structure needed to build or update the Mission Control landing page. Everything below reflects the current state of the shipped product.
+This document contains all copy, stats, features, and structure needed to build or update the Ramtri Solutions landing page. Everything below reflects the current state of the shipped product.
 
 ---
 
@@ -25,7 +25,7 @@ Manage agent fleets, track tasks, monitor costs, and orchestrate workflows — a
 - 165 unit tests (Vitest)
 - 295 E2E tests (Playwright)
 
-**Hero image:** `docs/mission-control-overview.png` (latest overview dashboard screenshot)
+**Hero image:** `docs/ramtri-solutions-overview.png` (latest overview dashboard screenshot)
 
 ---
 
@@ -164,7 +164,7 @@ Pipeline orchestration with workflow templates. Start, monitor, and manage multi
 ## Architecture Diagram (simplified)
 
 ```
-mission-control/
+ramtri-solutions/
   src/
     app/api/          98 REST API routes
     components/
@@ -186,8 +186,8 @@ mission-control/
 ## Quick Start Section
 
 ```bash
-git clone https://github.com/builderz-labs/mission-control.git
-cd mission-control
+git clone https://github.com/builderz-labs/ramtri-solutions.git
+cd ramtri-solutions
 pnpm install
 cp .env.example .env    # edit with your values
 pnpm dev                # http://localhost:3000
@@ -245,4 +245,4 @@ Initial login seeded from `AUTH_USER` / `AUTH_PASS` on first run.
 ## Footer
 
 MIT License | 2026 Builderz Labs
-GitHub: github.com/builderz-labs/mission-control
+GitHub: github.com/builderz-labs/ramtri-solutions

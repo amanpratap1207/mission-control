@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { buildMissionControlCsp, buildNonceRequestHeaders } from '@/lib/csp'
+import { buildRamtriSolutionsCsp, buildNonceRequestHeaders } from '@/lib/csp'
 
-describe('buildMissionControlCsp', () => {
+describe('buildRamtriSolutionsCsp', () => {
   it('includes the request nonce in script and style directives', () => {
-    const csp = buildMissionControlCsp({ nonce: 'nonce-123', googleEnabled: false })
+    const csp = buildRamtriSolutionsCsp({ nonce: 'nonce-123', googleEnabled: false })
 
     expect(csp).toContain(`script-src 'self' 'nonce-nonce-123' 'strict-dynamic'`)
     expect(csp).toContain("style-src 'self' 'unsafe-inline'")

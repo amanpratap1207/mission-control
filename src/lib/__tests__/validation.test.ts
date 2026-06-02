@@ -60,7 +60,7 @@ describe('createTaskSchema', () => {
     const result = createTaskSchema.safeParse({
       title: 'Route this task',
       metadata: {
-        implementation_repo: 'builderz-labs/mission-control',
+        implementation_repo: 'builderz-labs/ramtri-solutions',
         code_location: '/apps/api',
       },
     })

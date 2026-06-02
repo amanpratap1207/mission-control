@@ -1331,7 +1331,7 @@ const migrations: Migration[] = [
           agent_name TEXT,
           model TEXT,
           provider TEXT,
-          runtime TEXT DEFAULT 'mission-control',
+          runtime TEXT DEFAULT 'ramtri-solutions',
           runtime_version TEXT,
           trigger_type TEXT,
           parent_run_id TEXT,

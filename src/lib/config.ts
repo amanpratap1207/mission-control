@@ -10,32 +10,32 @@ function clampInt(value: number, min: number, max: number, fallback: number): nu
 
 const isBuildPhase = process.env.NEXT_PHASE === 'phase-production-build'
 const defaultDataDir = path.join(process.cwd(), '.data')
-const configuredDataDir = process.env.MISSION_CONTROL_DATA_DIR || defaultDataDir
+const configuredDataDir = process.env.RAMTRI_SOLUTIONS_DATA_DIR || defaultDataDir
 const buildScratchRoot =
-  process.env.MISSION_CONTROL_BUILD_DATA_DIR ||
-  path.join(os.tmpdir(), 'mission-control-build')
+  process.env.RAMTRI_SOLUTIONS_BUILD_DATA_DIR ||
+  path.join(os.tmpdir(), 'ramtri-solutions-build')
 const resolvedDataDir = isBuildPhase
   ? path.join(buildScratchRoot, `worker-${process.pid}`)
   : configuredDataDir
 const resolvedDbPath = isBuildPhase
-  ? (process.env.MISSION_CONTROL_BUILD_DB_PATH ||
-      path.join(resolvedDataDir, 'mission-control.db'))
-  : (process.env.MISSION_CONTROL_DB_PATH ||
-      path.join(resolvedDataDir, 'mission-control.db'))
+  ? (process.env.RAMTRI_SOLUTIONS_BUILD_DB_PATH ||
+      path.join(resolvedDataDir, 'ramtri-solutions.db'))
+  : (process.env.RAMTRI_SOLUTIONS_DB_PATH ||
+      path.join(resolvedDataDir, 'ramtri-solutions.db'))
 const resolvedTokensPath = isBuildPhase
-  ? (process.env.MISSION_CONTROL_BUILD_TOKENS_PATH ||
-      path.join(resolvedDataDir, 'mission-control-tokens.json'))
-  : (process.env.MISSION_CONTROL_TOKENS_PATH ||
-      path.join(resolvedDataDir, 'mission-control-tokens.json'))
+  ? (process.env.RAMTRI_SOLUTIONS_BUILD_TOKENS_PATH ||
+      path.join(resolvedDataDir, 'ramtri-solutions-tokens.json'))
+  : (process.env.RAMTRI_SOLUTIONS_TOKENS_PATH ||
+      path.join(resolvedDataDir, 'ramtri-solutions-tokens.json'))
 const defaultOpenClawStateDir = path.join(os.homedir(), '.openclaw')
 const explicitOpenClawConfigPath =
   process.env.OPENCLAW_CONFIG_PATH ||
-  process.env.MISSION_CONTROL_OPENCLAW_CONFIG_PATH ||
+  process.env.RAMTRI_SOLUTIONS_OPENCLAW_CONFIG_PATH ||
   ''
 const legacyOpenClawHome =
   process.env.OPENCLAW_HOME ||
   process.env.CLAWDBOT_HOME ||
-  process.env.MISSION_CONTROL_OPENCLAW_HOME ||
+  process.env.RAMTRI_SOLUTIONS_OPENCLAW_HOME ||
   ''
 const openclawStateDir =
   process.env.OPENCLAW_STATE_DIR ||
@@ -47,7 +47,7 @@ const openclawConfigPath =
   path.join(openclawStateDir, 'openclaw.json')
 const openclawWorkspaceDir =
   process.env.OPENCLAW_WORKSPACE_DIR ||
-  process.env.MISSION_CONTROL_WORKSPACE_DIR ||
+  process.env.RAMTRI_SOLUTIONS_WORKSPACE_DIR ||
   (openclawStateDir ? path.join(openclawStateDir, 'workspace') : '')
 const defaultMemoryDir = (() => {
   if (process.env.OPENCLAW_MEMORY_DIR) return process.env.OPENCLAW_MEMORY_DIR

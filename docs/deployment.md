@@ -137,7 +137,7 @@ make upgrade prod
 ### `update` vs `upgrade`
 
 - `make update [scope]`
-  - Fast-forwards the current Mission Control branch from origin.
+  - Fast-forwards the current Ramtri Solutions branch from origin.
   - For `scope=all`, if `OPENCLAW_ENABLED=1`, also refreshes OpenClaw source state.
   - For `scope=openclaw`, refreshes OpenClaw source state regardless of `OPENCLAW_ENABLED`.
   - Does **not** force an MC image rebuild and does **not** force restart.
@@ -178,15 +178,15 @@ docker compose --profile standalone up   # without gateway (standalone mode)
 Or build and run manually:
 
 ```bash
-docker build -t mission-control .
+docker build -t ramtri-solutions .
 docker run -p 3000:3000 \
-  -v mission-control-data:/app/.data \
+  -v ramtri-solutions-data:/app/.data \
   -e AUTH_USER=admin \
   -e AUTH_PASS=your-secure-password \
   -e API_KEY=your-api-key \
   -e OPENCLAW_GATEWAY_HOST=host.docker.internal \
   --add-host=host.docker.internal:host-gateway \
-  mission-control
+  ramtri-solutions
 ```
 
 The Docker image:
@@ -222,7 +222,7 @@ For local Docker development over plain `http://`, the following defaults are ex
 
 `MC_COOKIE_SECURE=1` and `MC_ENABLE_HSTS=1` are HTTPS-only hardening flags. Enabling them on plain HTTP can break login/session behavior and create misleading local warnings.
 
-Mission Control's security scan treats `host.docker.internal` as a valid local Docker topology (not a public exposure) and should not be interpreted as a production misconfiguration by itself.
+Ramtri Solutions's security scan treats `host.docker.internal` as a valid local Docker topology (not a public exposure) and should not be interpreted as a production misconfiguration by itself.
 
 ### Persistent Data
 
@@ -350,7 +350,7 @@ See `.env.example` for the full list. Key variables:
 | `OPENCLAW_SECURITY_DENY_RUNTIME` | No | `1` | Deny runtime tool group via env-driven bootstrap |
 | `OPENCLAW_SECURITY_DENY_FS` | No | `0` | Deny filesystem tool group (opt-in; can block file workflows) |
 | `OPENCLAW_SECURITY_SANDBOX_ALL` | No | `1` | Force `agents.defaults.sandbox.mode="all"` when set (env-driven) |
-| `MISSION_CONTROL_DATA_DIR` | No | `.data/` | Directory for all Mission Control data files (DB, tokens, etc.). Use an absolute path with the standalone server to survive rebuilds. |
+| `RAMTRI_SOLUTIONS_DATA_DIR` | No | `.data/` | Directory for all Ramtri Solutions data files (DB, tokens, etc.). Use an absolute path with the standalone server to survive rebuilds. |
 | `MC_ALLOWED_HOSTS` | No | `localhost,127.0.0.1` | Allowed hosts in production |
 | `MC_PORT` | No | `3000` | Host-side port that the bundled `docker-compose.yml` publishes the container's `PORT` on. The bundled `Makefile` expects `7012`. |
 | `ANTHROPIC_API_KEY` | No (Yes for direct dispatch) | - | Used when `dispatchModel` matches `claude-*` / `anthropic/*` and no gateway is available. |
@@ -366,7 +366,7 @@ See `.env.example` for the full list. Key variables:
 
 > **Note — `OPENCLAW_HOME` vs `OPENCLAW_STATE_DIR`**
 >
-> Mission Control supports two env vars for locating OpenClaw:
+> Ramtri Solutions supports two env vars for locating OpenClaw:
 >
 > - `OPENCLAW_HOME` — treated as the *parent* home directory; `.openclaw` is appended automatically.
 >   Setting `OPENCLAW_HOME=/root/.openclaw` will resolve to `/root/.openclaw/.openclaw` (**double-nesting bug**).
@@ -375,14 +375,14 @@ See `.env.example` for the full list. Key variables:
 > **Recommended `.env` for a standard install:**
 > ```env
 > OPENCLAW_STATE_DIR=/root/.openclaw
-> MISSION_CONTROL_DATA_DIR=/absolute/path/to/.data
+> RAMTRI_SOLUTIONS_DATA_DIR=/absolute/path/to/.data
 > ```
-> Using an absolute path for `MISSION_CONTROL_DATA_DIR` ensures your
+> Using an absolute path for `RAMTRI_SOLUTIONS_DATA_DIR` ensures your
 > database and data survive `npm run build` / standalone server rebuilds.
 
 ## Kubernetes Sidecar Deployment
 
-When running Mission Control alongside a gateway as containers in the same pod (sidecar pattern), agents are not discovered via the filesystem. Instead, use the gateway's agent registration API.
+When running Ramtri Solutions alongside a gateway as containers in the same pod (sidecar pattern), agents are not discovered via the filesystem. Instead, use the gateway's agent registration API.
 
 ### Architecture
 
@@ -484,12 +484,12 @@ pnpm install
 
 1. Verify the gateway is reachable from inside the container:
    ```bash
-   docker exec mission-control curl -s http://host.docker.internal:18789
+   docker exec ramtri-solutions curl -s http://host.docker.internal:18789
    ```
 
 2. Check env vars are set:
    ```bash
-   docker exec mission-control env | grep -i gateway
+   docker exec ramtri-solutions env | grep -i gateway
    ```
    You should see `OPENCLAW_GATEWAY_HOST=host.docker.internal`.
 
@@ -536,7 +536,7 @@ Ensure only one instance is running against the same `.data/` directory. SQLite 
 
 ### "Gateway error: origin not allowed"
 
-Your gateway is rejecting the Mission Control browser origin. Add the Control UI origin
+Your gateway is rejecting the Ramtri Solutions browser origin. Add the Control UI origin
 to your gateway config allowlist, for example:
 
 ```json
@@ -549,12 +549,12 @@ to your gateway config allowlist, for example:
 }
 ```
 
-Then restart the gateway and reconnect from Mission Control.
+Then restart the gateway and reconnect from Ramtri Solutions.
 
 ### "Gateway error: device identity required"
 
 Device identity signing uses WebCrypto and requires a secure browser context.
-Open Mission Control over HTTPS (or localhost), then reconnect.
+Open Ramtri Solutions over HTTPS (or localhost), then reconnect.
 
 ### "Gateway shows offline on VPS deployment"
 
@@ -566,7 +566,7 @@ Quick option:
 NEXT_PUBLIC_GATEWAY_OPTIONAL=true
 ```
 
-This runs Mission Control in standalone mode (core features available, live gateway streams unavailable).
+This runs Ramtri Solutions in standalone mode (core features available, live gateway streams unavailable).
 
 Production option: reverse-proxy gateway WebSocket over 443.
 
@@ -589,7 +589,7 @@ Then point UI to:
 NEXT_PUBLIC_GATEWAY_URL=wss://your-domain.com/gateway-ws
 ```
 
-Mission Control now retries common reverse-proxy websocket paths (`/gateway-ws`, `/gw`) automatically when root-path handshake fails, but setting `NEXT_PUBLIC_GATEWAY_URL` is still recommended for deterministic production behavior.
+Ramtri Solutions now retries common reverse-proxy websocket paths (`/gateway-ws`, `/gw`) automatically when root-path handshake fails, but setting `NEXT_PUBLIC_GATEWAY_URL` is still recommended for deterministic production behavior.
 
 ## Next Steps
 

@@ -23,7 +23,7 @@ import {
 } from './agent-detail-tabs'
 import { formatModelName, buildTaskStatParts } from '@/lib/agent-card-helpers'
 import { apiFetch, ApiError } from '@/lib/api-client'
-import { useMissionControl, type Agent } from '@/store'
+import { useRamtriSolutions, type Agent } from '@/store'
 
 const log = createClientLogger('AgentSquadPhase3')
 
@@ -96,7 +96,7 @@ const statusCardStyles: Record<string, { edge: string; glow: string; dot: string
 
 export function AgentSquadPanelPhase3() {
   const t = useTranslations('agentSquadPhase3')
-  const { agents, setAgents } = useMissionControl()
+  const { agents, setAgents } = useRamtriSolutions()
   const [loading, setLoading] = useState(agents.length === 0)
   const [error, setError] = useState<string | null>(null)
   const [selectedAgent, setSelectedAgent] = useState<Agent | null>(null)
@@ -254,7 +254,7 @@ export function AgentSquadPanelPhase3() {
       await apiFetch(`/api/agents/${agentName}/wake`, {
         method: 'POST',
         body: JSON.stringify({
-          message: `🤖 **Wake Up Call**\n\nAgent ${agentName}, you have been manually woken up.\nCheck Mission Control for any pending tasks or notifications.\n\n⏰ ${new Date().toLocaleString()}`
+          message: `🤖 **Wake Up Call**\n\nAgent ${agentName}, you have been manually woken up.\nCheck Ramtri Solutions for any pending tasks or notifications.\n\n⏰ ${new Date().toLocaleString()}`
         }),
         redirectOnUnauthenticated: false,
       })

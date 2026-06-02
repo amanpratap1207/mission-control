@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useCallback, useState, useRef } from 'react'
-import { useMissionControl, type Conversation, type ChatAttachment, type Agent, type ChatMessage } from '@/store'
+import { useRamtriSolutions, type Conversation, type ChatAttachment, type Agent, type ChatMessage } from '@/store'
 import { apiFetch, ApiError } from '@/lib/api-client'
 import { useSmartPoll } from '@/lib/use-smart-poll'
 import { createClientLogger } from '@/lib/client-logger'
@@ -44,7 +44,7 @@ export function ChatWorkspace({ mode = 'embedded', onClose }: ChatWorkspaceProps
     addSplitPane,
     removeSplitPane,
     clearSplitPanes,
-  } = useMissionControl()
+  } = useRamtriSolutions()
 
   const pendingIdRef = useRef(-1)
 

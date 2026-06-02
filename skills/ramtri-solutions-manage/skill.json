@@ -1,7 +1,7 @@
 {
-  "name": "mission-control-manage",
+  "name": "ramtri-solutions-manage",
   "version": "1.0.0",
-  "description": "Manage a running Mission Control instance — health checks, diagnostics, upgrades, backups",
+  "description": "Manage a running Ramtri Solutions instance — health checks, diagnostics, upgrades, backups",
   "author": "Builderz Labs",
   "license": "MIT",
   "tools": ["exec", "http"],
@@ -9,12 +9,12 @@
     "base_url": {
       "type": "string",
       "default": "http://localhost:3000",
-      "description": "Mission Control base URL"
+      "description": "Ramtri Solutions base URL"
     },
     "api_key": {
       "type": "string",
       "description": "API key for authentication (x-api-key header)"
     }
   },
-  "tags": ["mission-control", "management", "health", "upgrade", "backup"]
+  "tags": ["ramtri-solutions", "management", "health", "upgrade", "backup"]
 }

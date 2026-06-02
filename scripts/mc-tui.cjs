@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- Mission Control TUI (v2)
+ Ramtri Solutions TUI (v2)
  - Zero dependencies (ANSI escape codes)
  - Arrow key navigation between agents/tasks
  - Enter to drill into agent detail with sessions
@@ -35,7 +35,7 @@ function parseArgs(argv) {
 }
 
 function loadProfile(name) {
-  const p = path.join(os.homedir(), '.mission-control', 'profiles', `${name}.json`);
+  const p = path.join(os.homedir(), '.ramtri-solutions', 'profiles', `${name}.json`);
   try {
     const parsed = JSON.parse(fs.readFileSync(p, 'utf8'));
     return {
@@ -264,7 +264,7 @@ function renderDashboard() {
   ansi.clear();
 
   // Header
-  const title = ' MISSION CONTROL ';
+  const title = ' RAMTRI SOLUTIONS ';
   process.stdout.write(ansi.bgBlue(pad(title, cols)) + '\n');
 
   const healthData = state.data.health;
@@ -724,7 +724,7 @@ async function main() {
   const flags = parseArgs(process.argv.slice(2));
 
   if (flags.help) {
-    console.log(`Mission Control TUI
+    console.log(`Ramtri Solutions TUI
 
 Usage:
   node scripts/mc-tui.cjs [--url <base>] [--api-key <key>] [--profile <name>] [--refresh <ms>]

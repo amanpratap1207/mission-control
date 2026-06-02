@@ -1,5 +1,5 @@
-# Mission Control — AI Agent Orchestration Dashboard
-# https://github.com/builderz-labs/mission-control
+# Ramtri Solutions — AI Agent Orchestration Dashboard
+# https://github.com/builderz-labs/ramtri-solutions
 
 User-agent: *
 Allow: /

@@ -1,0 +1,27 @@
+{
+  "name": "ramtri-solutions-installer",
+  "version": "1.0.0",
+  "description": "Install and configure Ramtri Solutions — the OpenClaw agent orchestration dashboard",
+  "author": "Builderz Labs",
+  "license": "MIT",
+  "tools": ["exec", "fs"],
+  "parameters": {
+    "deployment_mode": {
+      "type": "string",
+      "enum": ["docker", "local"],
+      "default": "docker",
+      "description": "How to deploy Ramtri Solutions"
+    },
+    "port": {
+      "type": "number",
+      "default": 3000,
+      "description": "Port for the Ramtri Solutions dashboard"
+    },
+    "install_dir": {
+      "type": "string",
+      "default": "",
+      "description": "Installation directory (defaults to ./ramtri-solutions)"
+    }
+  },
+  "tags": ["ramtri-solutions", "dashboard", "installer", "docker"]
+}

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback, useRef, useEffect } from 'react'
-import { useMissionControl, Conversation } from '@/store'
+import { useRamtriSolutions, Conversation } from '@/store'
 import { useSmartPoll } from '@/lib/use-smart-poll'
 import { apiFetch, ApiError } from '@/lib/api-client'
 import { createClientLogger } from '@/lib/client-logger'
@@ -138,7 +138,7 @@ export function ConversationList({ onNewConversation }: ConversationListProps) {
     setSessionAttention,
     addSplitPane,
     agents,
-  } = useMissionControl()
+  } = useRamtriSolutions()
   const [search, setSearch] = useState('')
   const [initialLoading, setInitialLoading] = useState(conversations.length === 0)
 

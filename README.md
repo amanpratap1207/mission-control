@@ -1,6 +1,6 @@
 <div align="center">
 
-# Mission Control
+# Ramtri Solutions
 
 **Open-source dashboard for AI agent orchestration.**
 
@@ -9,24 +9,24 @@ Manage AI agent fleets, dispatch tasks, track costs, and coordinate multi-agent 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://typescriptlang.org/)
-[![Tests](https://img.shields.io/badge/Tests-577%20(282%20unit%20%2B%20295%20E2E)-brightgreen)](https://github.com/builderz-labs/mission-control)
-[![GitHub stars](https://img.shields.io/github/stars/builderz-labs/mission-control?style=social)](https://github.com/builderz-labs/mission-control/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/builderz-labs/mission-control?style=social)](https://github.com/builderz-labs/mission-control/network/members)
-[![Last commit](https://img.shields.io/github/last-commit/builderz-labs/mission-control)](https://github.com/builderz-labs/mission-control/commits/main)
-[![Open issues](https://img.shields.io/github/issues/builderz-labs/mission-control)](https://github.com/builderz-labs/mission-control/issues)
+[![Tests](https://img.shields.io/badge/Tests-577%20(282%20unit%20%2B%20295%20E2E)-brightgreen)](https://github.com/builderz-labs/ramtri-solutions)
+[![GitHub stars](https://img.shields.io/github/stars/builderz-labs/ramtri-solutions?style=social)](https://github.com/builderz-labs/ramtri-solutions/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/builderz-labs/ramtri-solutions?style=social)](https://github.com/builderz-labs/ramtri-solutions/network/members)
+[![Last commit](https://img.shields.io/github/last-commit/builderz-labs/ramtri-solutions)](https://github.com/builderz-labs/ramtri-solutions/commits/main)
+[![Open issues](https://img.shields.io/github/issues/builderz-labs/ramtri-solutions)](https://github.com/builderz-labs/ramtri-solutions/issues)
 
-![Mission Control Dashboard](docs/mission-control-overview.png)
+![Ramtri Solutions Dashboard](docs/ramtri-solutions-overview.png)
 
 </div>
 
 ---
 
-> **Alpha Software** — Mission Control is under active development. APIs, database schemas, and configuration formats may change between releases. Review the [security considerations](#security) before deploying to production.
+> **Alpha Software** — Ramtri Solutions is under active development. APIs, database schemas, and configuration formats may change between releases. Review the [security considerations](#security) before deploying to production.
 
 ## Contents
 
 - [Quick Start](#quick-start)
-- [Why teams adopt Mission Control](#why-teams-adopt-mission-control)
+- [Why teams adopt Ramtri Solutions](#why-teams-adopt-ramtri-solutions)
 - [Use-case recipes](#use-case-recipes)
 - [Getting Started with Agents](#getting-started-with-agents)
 - [Documentation](#documentation)
@@ -36,7 +36,7 @@ Manage AI agent fleets, dispatch tasks, track costs, and coordinate multi-agent 
 - [Development](#development)
 - [Troubleshooting](#troubleshooting)
 - [Security](#security)
-- [Built with Mission Control](#built-with-mission-control)
+- [Built with Ramtri Solutions](#built-with-ramtri-solutions)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [Support](#support)
@@ -62,8 +62,8 @@ Manage AI agent fleets, dispatch tasks, track costs, and coordinate multi-agent 
 ### One-Command Install
 
 ```bash
-git clone https://github.com/builderz-labs/mission-control.git
-cd mission-control
+git clone https://github.com/builderz-labs/ramtri-solutions.git
+cd ramtri-solutions
 bash install.sh --local     # or: bash install.sh --docker
 ```
 
@@ -78,8 +78,8 @@ The installer handles Node.js 22+, pnpm, dependencies, and auto-generates secure
 ### Manual Setup
 
 ```bash
-git clone https://github.com/builderz-labs/mission-control.git
-cd mission-control
+git clone https://github.com/builderz-labs/ramtri-solutions.git
+cd ramtri-solutions
 nvm use 22 && pnpm install
 pnpm dev                    # http://localhost:3000/setup
 ```
@@ -95,11 +95,11 @@ docker compose up           # auto-generates credentials, persists across restar
 The project publishes multi-arch images to GHCR on main and version tags.
 
 ```bash
-docker pull ghcr.io/builderz-labs/mission-control:latest
-docker run --rm -p 3000:3000 ghcr.io/builderz-labs/mission-control:latest
+docker pull ghcr.io/builderz-labs/ramtri-solutions:latest
+docker run --rm -p 3000:3000 ghcr.io/builderz-labs/ramtri-solutions:latest
 ```
 
-Docker Hub publishing is optional and may depend on org package visibility/secrets. If `docker.io/builderz-labs/mission-control` is unavailable, use GHCR.
+Docker Hub publishing is optional and may depend on org package visibility/secrets. If `docker.io/builderz-labs/ramtri-solutions` is unavailable, use GHCR.
 
 For production hardening (read-only filesystem, capability dropping, HSTS, network isolation):
 
@@ -109,7 +109,7 @@ docker compose -f docker-compose.yml -f docker-compose.hardened.yml up -d
 
 ---
 
-## Why teams adopt Mission Control
+## Why teams adopt Ramtri Solutions
 
 - Predictable orchestration: one dashboard for task flow, dispatch, quality gates, and audit trails.
 - Faster operator response: real-time agent/task/security telemetry without stitching tools together.
@@ -184,7 +184,7 @@ For the full walkthrough, see the **[Quickstart Guide](docs/quickstart.md)**.
 
 ### Gateway Optional Mode
 
-Mission Control can run standalone without a gateway connection — useful for VPS deployments with firewall restrictions or when running primarily for project/task operations:
+Ramtri Solutions can run standalone without a gateway connection — useful for VPS deployments with firewall restrictions or when running primarily for project/task operations:
 
 ```bash
 NEXT_PUBLIC_GATEWAY_OPTIONAL=true pnpm start
@@ -209,19 +209,19 @@ Task board, projects, agents, sessions, scheduler, webhooks, alerts, and cost tr
 
 Monitor agent status, configure models, view heartbeats, and manage the full agent lifecycle from registration to retirement. Local agent discovery from `~/.agents/`, `~/.codex/agents/`, and `~/.claude/agents/`. Agent SOUL system with bidirectional workspace sync.
 
-![Mission Control Agents Panel](docs/mission-control-agents.png)
+![Ramtri Solutions Agents Panel](docs/ramtri-solutions-agents.png)
 
 ### Task Board
 
 Kanban board with six columns (inbox → assigned → in progress → review → quality review → done), drag-and-drop, priority levels, assignments, threaded comments, and inline sub-agent spawning. Multi-project support with per-project ticket prefixes.
 
-![Mission Control Tasks Panel](docs/mission-control-tasks.png)
+![Ramtri Solutions Tasks Panel](docs/ramtri-solutions-tasks.png)
 
 ### Memory Knowledge Graph
 
 Explore agent knowledge through the Memory Browser, filesystem-backed memory tree, and interactive relationship graph for sessions, memory chunks, and linked knowledge files.
 
-![Mission Control Memory Graph](docs/mission-control-memory-graph.png)
+![Ramtri Solutions Memory Graph](docs/ramtri-solutions-memory-graph.png)
 
 ### Skills Hub
 
@@ -249,7 +249,7 @@ Four-layer evaluation: output evals (task completion scoring against golden data
 
 Create recurring tasks with natural language like "every morning at 9am" or "every 2 hours". The built-in schedule parser converts expressions to cron and stores them in task metadata. A template-clone pattern keeps the original as a template and spawns dated child tasks on schedule.
 
-![Mission Control Cron Panel](docs/mission-control-cron.png)
+![Ramtri Solutions Cron Panel](docs/ramtri-solutions-cron.png)
 
 ### Claude Code Integration
 
@@ -261,7 +261,7 @@ Create recurring tasks with natural language like "every morning at 9am" or "eve
 
 Real-time activity stream across all agents, tasks, and system events. Filter by event type, agent, or time range.
 
-![Mission Control Activity Panel](docs/mission-control-activity.png)
+![Ramtri Solutions Activity Panel](docs/ramtri-solutions-activity.png)
 
 ### Integrations
 
@@ -280,7 +280,7 @@ Multi-tenant workspace isolation via `/api/super/*` endpoints. Create client ins
 ## Architecture
 
 ```
-mission-control/
+ramtri-solutions/
 ├── src/
 │   ├── proxy.ts               # Auth gate + CSRF + network access control
 │   ├── app/
@@ -337,7 +337,7 @@ mission-control/
 
 ## API Reference
 
-Mission Control exposes 101 REST endpoints documented via OpenAPI 3.1. Browse the interactive API docs at `/api-docs` (Scalar UI) when running locally, or see [`openapi.json`](openapi.json).
+Ramtri Solutions exposes 101 REST endpoints documented via OpenAPI 3.1. Browse the interactive API docs at `/api-docs` (Scalar UI) when running locally, or see [`openapi.json`](openapi.json).
 
 <details>
 <summary><strong>Core endpoints at a glance</strong></summary>
@@ -369,7 +369,7 @@ See [`.env.example`](.env.example) for the complete list. Key variables:
 | `OPENCLAW_CONFIG_PATH` | No* | Absolute path to `openclaw.json` |
 | `OPENCLAW_STATE_DIR` | No* | Exact path to the OpenClaw state directory (default: `~/.openclaw`). Preferred over `OPENCLAW_HOME` — avoids double-nesting |
 | `OPENCLAW_HOME` | No* | Legacy alias — treated as *parent* home dir (`.openclaw` is appended). Use `OPENCLAW_STATE_DIR` when it already points to the state dir |
-| `MISSION_CONTROL_DATA_DIR` | No | Directory for all MC data files (DB, tokens, etc.). Use an absolute path with the standalone server to survive rebuilds. |
+| `RAMTRI_SOLUTIONS_DATA_DIR` | No | Directory for all MC data files (DB, tokens, etc.). Use an absolute path with the standalone server to survive rebuilds. |
 | `MC_CLAUDE_HOME` | No | Path to `~/.claude` directory |
 | `MC_ALLOWED_HOSTS` | No | Host allowlist for production |
 | `NEXT_PUBLIC_GATEWAY_OPTIONAL` | No | Run without gateway connection |
@@ -419,20 +419,20 @@ See [docs/deployment.md](docs/deployment.md) for detailed troubleshooting.
 
 ---
 
-## Built with Mission Control
+## Built with Ramtri Solutions
 
-Teams and projects using Mission Control in production. [Add yours!](https://github.com/builderz-labs/mission-control/issues/new?title=Showcase:%20[Your%20Project]&labels=showcase)
+Teams and projects using Ramtri Solutions in production. [Add yours!](https://github.com/builderz-labs/ramtri-solutions/issues/new?title=Showcase:%20[Your%20Project]&labels=showcase)
 
 | Project | Description |
 |---------|-------------|
-| [MUTX](https://x.com/mutxdev) | Agent infrastructure platform — ported and extended Mission Control for multi-agent orchestration |
+| [MUTX](https://x.com/mutxdev) | Agent infrastructure platform — ported and extended Ramtri Solutions for multi-agent orchestration |
 | [Builderz](https://builderz.dev) | AI agent fleet management across 32+ shipped products |
 
-> **Using Mission Control?** We'd love to feature you. Open an issue with the `showcase` label or tweet [@nyk_builderz](https://x.com/nyk_builderz).
+> **Using Ramtri Solutions?** We'd love to feature you. Open an issue with the `showcase` label or tweet [@nyk_builderz](https://x.com/nyk_builderz).
 
 ## Roadmap
 
-See [open issues](https://github.com/builderz-labs/mission-control/issues) for planned work.
+See [open issues](https://github.com/builderz-labs/ramtri-solutions/issues) for planned work.
 
 - [ ] Agent-agnostic gateway support — connect any orchestration framework
 - [ ] **[Flight Deck](https://github.com/splitlabs/flight-deck)** — native desktop companion app (Tauri v2) with PTY terminal grid and system tray HUD
@@ -466,21 +466,21 @@ If you find this project useful, consider supporting the open-source work:
 </div>
 
 <p align="center">
-  <a href="https://star-history.com/#builderz-labs/mission-control&Date">
-    <img src="https://api.star-history.com/svg?repos=builderz-labs/mission-control&type=Date" alt="Star History" width="400">
+  <a href="https://star-history.com/#builderz-labs/ramtri-solutions&Date">
+    <img src="https://api.star-history.com/svg?repos=builderz-labs/ramtri-solutions&type=Date" alt="Star History" width="400">
   </a>
 </p>
 
 ## License
 
-[MIT](LICENSE) © 2026 [Builderz Labs](https://github.com/builderz-labs/mission-control)
+[MIT](LICENSE) © 2026 [Builderz Labs](https://github.com/builderz-labs/ramtri-solutions)
 
 
 ## FAQ
 
-### What is Mission Control?
+### What is Ramtri Solutions?
 
-Mission Control is an open-source dashboard for AI agent orchestration. Manage AI agent fleets, dispatch tasks, track costs, and coordinate multi-agent workflows — self-hosted, zero external dependencies, powered by SQLite.
+Ramtri Solutions is an open-source dashboard for AI agent orchestration. Manage AI agent fleets, dispatch tasks, track costs, and coordinate multi-agent workflows — self-hosted, zero external dependencies, powered by SQLite.
 
 ### Key Features
 
@@ -509,15 +509,15 @@ Mission Control is an open-source dashboard for AI agent orchestration. Manage A
 
 **One-Command Install:**
 ```bash
-git clone https://github.com/builderz-labs/mission-control.git
-cd mission-control
+git clone https://github.com/builderz-labs/ramtri-solutions.git
+cd ramtri-solutions
 bash install.sh --local     # or: bash install.sh --docker
 ```
 
 **Manual Setup:**
 ```bash
-git clone https://github.com/builderz-labs/mission-control.git
-cd mission-control
+git clone https://github.com/builderz-labs/ramtri-solutions.git
+cd ramtri-solutions
 nvm use 22 && pnpm install
 pnpm dev                    # http://localhost:3000/setup
 ```
@@ -527,7 +527,7 @@ pnpm dev                    # http://localhost:3000/setup
 docker compose up           # auto-generates credentials, persists across restarts
 ```
 
-### Why Choose Mission Control?
+### Why Choose Ramtri Solutions?
 
 1. **Self-hosted** - Full control over data, no external dependencies
 2. **Production-ready** - extensive Vitest unit + Playwright E2E coverage
@@ -549,6 +549,6 @@ MIT License
 
 ### Help Resources
 
-- [Repository](https://github.com/builderz-labs/mission-control)
-- [Documentation](https://github.com/builderz-labs/mission-control/tree/main/docs)
-- [Issues](https://github.com/builderz-labs/mission-control/issues)
+- [Repository](https://github.com/builderz-labs/ramtri-solutions)
+- [Documentation](https://github.com/builderz-labs/ramtri-solutions/tree/main/docs)
+- [Issues](https://github.com/builderz-labs/ramtri-solutions/issues)

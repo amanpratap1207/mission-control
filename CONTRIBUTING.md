@@ -1,13 +1,13 @@
-# Contributing to Mission Control
+# Contributing to Ramtri Solutions
 
-Thank you for your interest in contributing to Mission Control.
+Thank you for your interest in contributing to Ramtri Solutions.
 
 ## Getting Started
 
 ```bash
 # Clone the repo
-git clone https://github.com/builderz-labs/mission-control.git
-cd mission-control
+git clone https://github.com/builderz-labs/ramtri-solutions.git
+cd ramtri-solutions
 
 # Install dependencies
 pnpm install

@@ -8,7 +8,7 @@ export type JsonPrimitive = string | number | boolean | null
 export type JsonValue = JsonPrimitive | JsonValue[] | { [key: string]: JsonValue | undefined }
 type DashboardLayoutUpdater = string[] | null | ((current: string[] | null) => string[] | null)
 
-// Enhanced types for Mission Control
+// Enhanced types for Ramtri Solutions
 export interface Session {
   id: string
   key: string
@@ -95,7 +95,7 @@ export interface ModelConfig {
   costPer1k: number
 }
 
-// Mission Control Phase 2 Types
+// Ramtri Solutions Phase 2 Types
 export interface Task {
   id: number
   title: string
@@ -303,7 +303,7 @@ export interface CurrentUser {
   avatar_url?: string | null
 }
 
-// Billing/provisioning entity that can own multiple Mission Control workspaces.
+// Billing/provisioning entity that can own multiple Ramtri Solutions workspaces.
 export interface Tenant {
   id: number
   slug: string
@@ -368,7 +368,7 @@ export interface ExecApprovalRequest {
   status: 'pending' | 'approved' | 'denied' | 'expired'
 }
 
-interface MissionControlStore {
+interface RamtriSolutionsStore {
   // Dashboard Mode (local vs full gateway)
   dashboardMode: 'full' | 'local'
   gatewayAvailable: boolean
@@ -409,7 +409,7 @@ interface MissionControlStore {
   setConnection: (connection: Partial<ConnectionStatus>) => void
   setLastMessage: (message: unknown) => void
 
-  // Mission Control Phase 2 - Tasks
+  // Ramtri Solutions Phase 2 - Tasks
   tasks: Task[]
   selectedTask: Task | null
   setTasks: (tasks: Task[]) => void
@@ -418,7 +418,7 @@ interface MissionControlStore {
   updateTask: (taskId: number, updates: Partial<Task>) => void
   deleteTask: (taskId: number) => void
 
-  // Mission Control Phase 2 - Agents
+  // Ramtri Solutions Phase 2 - Agents
   agents: Agent[]
   selectedAgent: Agent | null
   setAgents: (agents: Agent[]) => void
@@ -427,12 +427,12 @@ interface MissionControlStore {
   updateAgent: (agentId: number, updates: Partial<Agent>) => void
   deleteAgent: (agentId: number) => void
 
-  // Mission Control Phase 2 - Activities
+  // Ramtri Solutions Phase 2 - Activities
   activities: Activity[]
   setActivities: (activities: Activity[]) => void
   addActivity: (activity: Activity) => void
 
-  // Mission Control Phase 2 - Notifications
+  // Ramtri Solutions Phase 2 - Notifications
   notifications: Notification[]
   unreadNotificationCount: number
   setNotifications: (notifications: Notification[]) => void
@@ -440,12 +440,12 @@ interface MissionControlStore {
   markNotificationRead: (notificationId: number) => void
   markAllNotificationsRead: () => void
 
-  // Mission Control Phase 2 - Comments
+  // Ramtri Solutions Phase 2 - Comments
   taskComments: Record<number, Comment[]>
   setTaskComments: (taskId: number, comments: Comment[]) => void
   addTaskComment: (taskId: number, comment: Comment) => void
 
-  // Mission Control Phase 2 - Standup
+  // Ramtri Solutions Phase 2 - Standup
   standupReports: StandupReport[]
   currentStandupReport: StandupReport | null
   setStandupReports: (reports: StandupReport[]) => void
@@ -605,7 +605,7 @@ interface MissionControlStore {
   setHeaderDensity: (mode: 'focus' | 'compact') => void
 }
 
-export const useMissionControl = create<MissionControlStore>()(
+export const useRamtriSolutions = create<RamtriSolutionsStore>()(
   subscribeWithSelector((set, get) => ({
     // Dashboard Mode
     dashboardMode: 'local' as const,
@@ -996,7 +996,7 @@ export const useMissionControl = create<MissionControlStore>()(
       set({ headerDensity: mode })
     },
 
-    // Mission Control Phase 2 - Tasks
+    // Ramtri Solutions Phase 2 - Tasks
     tasks: [],
     selectedTask: null,
     setTasks: (tasks) => set({ tasks }),
@@ -1020,7 +1020,7 @@ export const useMissionControl = create<MissionControlStore>()(
         selectedTask: state.selectedTask?.id === taskId ? null : state.selectedTask
       })),
 
-    // Mission Control Phase 2 - Agents
+    // Ramtri Solutions Phase 2 - Agents
     agents: [],
     selectedAgent: null,
     setAgents: (agents) => set({ agents }),
@@ -1044,7 +1044,7 @@ export const useMissionControl = create<MissionControlStore>()(
         selectedAgent: state.selectedAgent?.id === agentId ? null : state.selectedAgent
       })),
 
-    // Mission Control Phase 2 - Activities
+    // Ramtri Solutions Phase 2 - Activities
     activities: [],
     setActivities: (activities) => set({ activities }),
     addActivity: (activity) =>
@@ -1052,7 +1052,7 @@ export const useMissionControl = create<MissionControlStore>()(
         activities: [activity, ...state.activities].slice(0, 1000) // Keep last 1000
       })),
 
-    // Mission Control Phase 2 - Notifications
+    // Ramtri Solutions Phase 2 - Notifications
     notifications: [],
     unreadNotificationCount: 0,
     setNotifications: (notifications) =>
@@ -1082,7 +1082,7 @@ export const useMissionControl = create<MissionControlStore>()(
         unreadNotificationCount: 0
       })),
 
-    // Mission Control Phase 2 - Comments
+    // Ramtri Solutions Phase 2 - Comments
     taskComments: {},
     setTaskComments: (taskId, comments) =>
       set((state) => ({
@@ -1183,7 +1183,7 @@ export const useMissionControl = create<MissionControlStore>()(
         return { sessionAttention: { ...state.sessionAttention, [sessionId]: level } }
       }),
 
-    // Mission Control Phase 2 - Standup
+    // Ramtri Solutions Phase 2 - Standup
     standupReports: [],
     currentStandupReport: null,
     setStandupReports: (reports) => set({ standupReports: reports }),

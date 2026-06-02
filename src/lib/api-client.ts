@@ -3,7 +3,7 @@
  *
  * Why this exists
  * ---------------
- * Mission Control had no global auth-failure handler. When a session expired,
+ * Ramtri Solutions had no global auth-failure handler. When a session expired,
  * `fetch('/api/...')` returned 401 silently and panels (cost-tracker, dashboard,
  * activities) stuck on loading skeletons forever — users perceived "the service
  * died" but the backend was healthy. Root cause logged in:

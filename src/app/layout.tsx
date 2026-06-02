@@ -26,7 +26,7 @@ function resolveMetadataBase(): URL {
     process.env.NEXT_PUBLIC_APP_URL,
     process.env.MC_PUBLIC_BASE_URL,
     process.env.APP_URL,
-    process.env.MISSION_CONTROL_PUBLIC_URL,
+    process.env.RAMTRI_SOLUTIONS_PUBLIC_URL,
   ]
     .map((value) => String(value || '').trim())
     .filter(Boolean)
@@ -40,7 +40,7 @@ function resolveMetadataBase(): URL {
   }
 
   // Prevent localhost fallback in production metadata when env is unset.
-  return new URL('https://mission-control.local')
+  return new URL('https://ramtri-solutions.local')
 }
 
 const metadataBase = resolveMetadataBase()
@@ -53,7 +53,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Mission Control — AI Agent Orchestration Dashboard',
+  title: 'Ramtri Solutions — AI Agent Orchestration Dashboard',
   description: 'Open-source dashboard for AI agent orchestration. Manage agent fleets, dispatch tasks, track costs, and coordinate multi-agent workflows. Self-hosted, zero dependencies, SQLite-powered.',
   metadataBase,
   icons: {
@@ -65,22 +65,22 @@ export const metadata: Metadata = {
     shortcut: ['/icon.png'],
   },
   openGraph: {
-    title: 'Mission Control — AI Agent Orchestration Dashboard',
+    title: 'Ramtri Solutions — AI Agent Orchestration Dashboard',
     description: 'Open-source dashboard for AI agent orchestration. Manage agent fleets, dispatch tasks, track costs, and coordinate multi-agent workflows.',
-    images: [{ url: '/brand/mc-logo-512.png', width: 512, height: 512, alt: 'Mission Control — open-source AI agent orchestration dashboard' }],
+    images: [{ url: '/brand/mc-logo-512.png', width: 512, height: 512, alt: 'Ramtri Solutions — open-source AI agent orchestration dashboard' }],
     type: 'website',
-    siteName: 'Mission Control',
+    siteName: 'Ramtri Solutions',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mission Control — AI Agent Orchestration Dashboard',
+    title: 'Ramtri Solutions — AI Agent Orchestration Dashboard',
     description: 'Open-source dashboard for AI agent orchestration. Manage agent fleets, dispatch tasks, track costs, and coordinate multi-agent workflows.',
     images: ['/brand/mc-logo-512.png'],
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Mission Control',
+    title: 'Ramtri Solutions',
   },
 }
 

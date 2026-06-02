@@ -1,4 +1,4 @@
-# Образцовый пример: команда из 3 провайдеров (Claude + OpenAI + Local) в Mission Control
+# Образцовый пример: команда из 3 провайдеров (Claude + OpenAI + Local) в Ramtri Solutions
 
 Демо-сценарий для оператора. Поднимает 4 агентов на трёх провайдерах, прогоняет одну master-задачу через декомпозицию → реализацию → линт → ревью.
 
@@ -10,7 +10,7 @@
 
 ### 0.1. `.env` в корне проекта
 
-Создай (или допиши) файл `beads/discovered/mission-control/.env`:
+Создай (или допиши) файл `beads/discovered/ramtri-solutions/.env`:
 
 ```dotenv
 # Порт для Makefile (по умолчанию 7012)
@@ -45,7 +45,7 @@ AUTH_PASS=admin123
 Проверь что MC видит LMStudio:
 
 ```bash
-docker exec mission-control sh -c 'curl -sS http://host.docker.internal:1234/v1/models'
+docker exec ramtri-solutions sh -c 'curl -sS http://host.docker.internal:1234/v1/models'
 ```
 
 Если возвращает JSON с твоей моделью — всё ок.
@@ -53,7 +53,7 @@ docker exec mission-control sh -c 'curl -sS http://host.docker.internal:1234/v1/
 ### 0.3. Поднять MC
 
 ```bash
-cd beads/discovered/mission-control
+cd beads/discovered/ramtri-solutions
 make recreate     # пересоздаст контейнер с новым .env
 ```
 
@@ -141,7 +141,7 @@ Migrate session-cookie auth to JWT. Demo project for multi-provider team.
 | Поле                | Тип            | Что вводить                                                    |
 |---------------------|----------------|----------------------------------------------------------------|
 | Description         | textarea       | (уже сохранено из шага 2.1, при желании можно отредактировать) |
-| GitHub Repo         | text `owner/repo` | оставь пустым или впиши `nnnet/mission-control` если работаешь с реальным репо |
+| GitHub Repo         | text `owner/repo` | оставь пустым или впиши `nnnet/ramtri-solutions` если работаешь с реальным репо |
 | Deadline            | date `mm/dd/yyyy` | оставь пустым                                                |
 | Color               | 8 цветных точек | выбери любой (например синий — для UI-маркера)                |
 | Assigned Agents     | chip selector  | пока не трогай — назначим агентов в шаге 7 на уровне задачи    |
@@ -621,7 +621,7 @@ the implementor agent can verify locally before marking done.
 ### LMStudio не отвечает / `local API 404`
 
 ```bash
-docker exec mission-control sh -c 'curl -sS http://host.docker.internal:1234/v1/models | head'
+docker exec ramtri-solutions sh -c 'curl -sS http://host.docker.internal:1234/v1/models | head'
 ```
 
 - 404 → LMStudio не на 1234.
@@ -647,7 +647,7 @@ LMStudio долго грузит модель в память на первом 
 ### Не знаю свой LMStudio model id
 
 ```bash
-docker exec mission-control sh -c 'curl -sS http://host.docker.internal:1234/v1/models' | python3 -c 'import json,sys;[print(m["id"]) for m in json.load(sys.stdin)["data"]]'
+docker exec ramtri-solutions sh -c 'curl -sS http://host.docker.internal:1234/v1/models' | python3 -c 'import json,sys;[print(m["id"]) for m in json.load(sys.stdin)["data"]]'
 ```
 
 Покажет точные id всех моделей. Используй один из них (с префиксом `local/`).
@@ -672,7 +672,7 @@ LOCAL_LLM_ENDPOINT=http://host.docker.internal:11434/v1
 
 **liteLLM proxy для нескольких backend'ов:**
 ```yaml
-# docker-compose.yml — добавь сервис litellm рядом с mission-control
+# docker-compose.yml — добавь сервис litellm рядом с ramtri-solutions
 litellm:
   image: ghcr.io/berriai/litellm:main-latest
   ports: ["4000:4000"]

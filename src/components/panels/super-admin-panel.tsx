@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
-import { useMissionControl } from '@/store'
+import { useRamtriSolutions } from '@/store'
 import { apiFetch, ApiError } from '@/lib/api-client'
 
 /** Pull the upstream `error` string out of an ApiError payload, falling back to its message. */
@@ -102,7 +102,7 @@ const JOB_PAGE_SIZE = 8
 
 export function SuperAdminPanel() {
   const t = useTranslations('superAdmin')
-  const { currentUser, dashboardMode } = useMissionControl()
+  const { currentUser, dashboardMode } = useRamtriSolutions()
   const isLocal = dashboardMode === 'local'
 
   const [tenants, setTenants] = useState<TenantRow[]>([])
@@ -191,7 +191,7 @@ export function SuperAdminPanel() {
           tenantRows = [{
             id: -1,
             slug: 'local-system',
-            display_name: 'Local Mission Control',
+            display_name: 'Local Ramtri Solutions',
             linux_user: currentUser?.username || 'local',
             created_by: 'local',
             owner_gateway: primaryGateway?.name || 'local',
@@ -235,7 +235,7 @@ export function SuperAdminPanel() {
               id,
               tenant_id: -1,
               tenant_slug: 'local-system',
-              tenant_display_name: 'Local Mission Control',
+              tenant_display_name: 'Local Ramtri Solutions',
               job_type: 'automation',
               status,
               dry_run: 1,

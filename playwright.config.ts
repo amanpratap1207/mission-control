@@ -24,7 +24,7 @@ export default defineConfig({
     timeout: 120_000,
     env: {
       ...process.env,
-      MISSION_CONTROL_TEST_MODE: process.env.MISSION_CONTROL_TEST_MODE || '1',
+      RAMTRI_SOLUTIONS_TEST_MODE: process.env.RAMTRI_SOLUTIONS_TEST_MODE || '1',
       MC_DISABLE_RATE_LIMIT: process.env.MC_DISABLE_RATE_LIMIT || '1',
       MC_WORKLOAD_QUEUE_DEPTH_THROTTLE: process.env.MC_WORKLOAD_QUEUE_DEPTH_THROTTLE || '1000',
       MC_WORKLOAD_QUEUE_DEPTH_SHED: process.env.MC_WORKLOAD_QUEUE_DEPTH_SHED || '2000',
